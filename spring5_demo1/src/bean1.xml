@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1 配置User对象创建 -->
+<!--    <bean id="user" class="com.ggs.spring5.User"></bean>-->
+
+    <!-- 2 set方法注入属性 -->
+    <bean id="book" class="com.ggs.spring5.Book">
+        <!--
+            使用property完成属性注入
+            name: 类里面属性名称
+            value: 向属性注入的值
+        -->
+        <property name="bname" value="=论语="></property>
+        <property name="bauthor" value="老子"></property>
+        <!-- null值 -->
+<!--        <property name="address">-->
+<!--            <null/>-->
+<!--        </property>-->
+        <!--属性值包含特殊符号-->
+<!--        <property name="address" value="&lt;&lt;广东&gt;&gt;"></property>-->
+
+        <!--属性值包含特殊符号-->
+        <property name="address">
+            <value><![CDATA[<<广东>>]]></value>
+        </property>
+
+    </bean>
+
+    <!-- 3 有参构造注入属性-->
+<!--    <bean id="orders" class="com.ggs.spring5.Orders">-->
+<!--        <constructor-arg index="0" value="我的家"></constructor-arg>-->
+<!--        <constructor-arg name="oname" value="红米red30"></constructor-arg>-->
+<!--    </bean>-->
+
+    <!-- 4 p名称空间注入属性值 首先要导入P名称空间 -->
+<!--    <bean id="book" class="com.ggs.spring5.Book" p:bauthor="老王" p:bname="邻居传奇">-->
+<!--    </bean>-->
+
+</beans>
