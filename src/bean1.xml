@@ -10,7 +10,7 @@
     <!--开启注解扫描-->
     <context:component-scan base-package="com.ggs.spring5"></context:component-scan>
 
-    <!--开启Aspect生成代理对啊ing-->
+    <!--开启Aspect生成代理对象 -->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 </beans>

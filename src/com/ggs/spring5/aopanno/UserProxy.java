@@ -2,6 +2,7 @@ package com.ggs.spring5.aopanno;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,9 +11,17 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect
+@Order(1)
 public class UserProxy {
+
+  //相同切入点抽取
+  @Pointcut(value = "execution(* com.ggs.spring5.aopanno.User.add(..))")
+  public void pointCut(){
+  }
+
   // 前置通知
-  @Before(value = "execution(* com.ggs.spring5.aopanno.User.add(..))")
+//  @Before(value = "execution(* com.ggs.spring5.aopanno.User.add(..))")
+  @Before(value = "pointCut()")
   public void before() {
     System.out.println("before");
   }
