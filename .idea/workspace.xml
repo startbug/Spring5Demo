@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d23a3c3f-ba72-420e-af68-f695ec9ae8ed" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="gitee-master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="github-master" />
+                    <option name="lastUsedInstant" value="1591674067" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="gitee-master" />
+                    <option name="lastUsedInstant" value="1591673794" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1591673430" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\maven\repository" />
+        <option name="mavenHome" value="D:/maven/apache-maven-3.6.2" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.6.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadAnnotationsAutomatically" value="true" />
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
+        <option name="jdkForImporter" value="1.8.0_241" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1d2iWH2qbDxk4jyrb2mtvCNmw7X" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8.0_241" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="settings.gitee" />
+  </component>
+  <component name="RunManager">
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ggs.spring5.test" />
+      <module name="spring5_demo6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ggs.spring5.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d23a3c3f-ba72-420e-af68-f695ec9ae8ed" name="Default Changelist" comment="" />
+      <created>1591629619026</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591629619026</updated>
+      <workItem from="1591629620575" duration="983000" />
+      <workItem from="1591630627373" duration="24000" />
+      <workItem from="1591630660203" duration="922000" />
+      <workItem from="1591631594595" duration="458000" />
+      <workItem from="1591632072390" duration="221000" />
+      <workItem from="1591632305400" duration="71000" />
+      <workItem from="1591632396534" duration="52000" />
+      <workItem from="1591670545360" duration="346000" />
+      <workItem from="1591670933981" duration="2778000" />
+      <workItem from="1591673719002" duration="198000" />
+      <workItem from="1591673919603" duration="372000" />
+    </task>
+    <task id="LOCAL-00001" summary="初始化仓库,Spring5学习案例">
+      <created>1591632214240</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591632214240</updated>
+    </task>
+    <task id="LOCAL-00002" summary="初始化仓库,Spring5学习案例">
+      <created>1591672487654</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1591672487654</updated>
+    </task>
+    <task id="LOCAL-00003" summary="初始化仓库,Spring5学习案例">
+      <created>1591673506599</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1591673506599</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="初始化仓库,Spring5学习案例" />
+    <option name="LAST_COMMIT_MESSAGE" value="初始化仓库,Spring5学习案例" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1156" y="428" key="#Notifications" timestamp="1591673087931">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1156" y="428" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1591673087931" />
+    <state x="440" y="94" key="#Project_Structure" timestamp="1591632337376">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1591632337376" />
+    <state x="790" y="230" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1591630069917">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="790" y="230" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591630069917" />
+    <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1591630047482">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591630047482" />
+    <state x="526" y="113" key="CommitChangelistDialog2" timestamp="1591673504064">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="526" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591673504064" />
+    <state x="197" y="124" key="DiffContextDialog" timestamp="1591672612999">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="197" y="124" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591672612999" />
+    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1591631604367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591631604367" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1591632375528">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591632375528" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1591632375528">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591632375528" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1591632375528">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591632375528" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1591632375528">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591632375528" />
+    <state x="734" y="138" key="SettingsEditor" timestamp="1591671523169">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="734" y="138" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591671523169" />
+    <state x="758" y="192" width="1032" height="747" key="ShowDiffWithBranchDialog" timestamp="1591674291314">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="758" y="192" width="1032" height="747" key="ShowDiffWithBranchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591674291314" />
+    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2" timestamp="1591673999197">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591673999197" />
+    <state x="658" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1591630748977">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="658" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1591630748977" />
+    <state x="1003" y="470" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1591674010271">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1003" y="470" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591674010271" />
+    <state x="334" y="130" key="new project wizard" timestamp="1591632333261">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="334" y="130" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1591632333261" />
+  </component>
+</project>
