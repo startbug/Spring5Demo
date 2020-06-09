@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect
-@Order(Integer.MAX_VALUE)
+@Order(1)
 public class PersonProxy {
 
     @Pointcut(value = "execution(* com.ggs.spring5.aopanno.User.add(..))")

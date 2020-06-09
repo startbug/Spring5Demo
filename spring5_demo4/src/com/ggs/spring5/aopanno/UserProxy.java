@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect
-@Order(1)
+@Order(10)
 public class UserProxy {
 
   //相同切入点抽取
