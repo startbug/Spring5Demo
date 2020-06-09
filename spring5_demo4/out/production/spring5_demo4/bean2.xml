@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--注册两个对象-->
+    <bean id="book" class="com.ggs.spring5.aopxml.Book"></bean>
+    <bean id="bookProxy" class="com.ggs.spring5.aopxml.BookProxy"></bean>
+
+    <!--配置aop增强-->
+    <aop:config>
+        <!--切入点-->
+        <aop:pointcut id="pointCut" expression="execution(* com.ggs.spring5.aopxml.Book.addBook(..))"/>
+        <!--配置切面,引用增强类 -->
+        <aop:aspect ref="bookProxy">
+            <aop:before method="before" pointcut-ref="pointCut"></aop:before>
+        </aop:aspect>
+    </aop:config>
+
+
+
+
+</beans>
