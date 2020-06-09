@@ -106,7 +106,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="settings.gitee" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TestSpring5Demo.testBook">
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ggs.spring5.test" />
       <module name="spring5_demo6" />
@@ -120,8 +120,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestSpring5Demo.testBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring5_demo2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ggs.spring5.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ggs.spring5.test" />
+      <option name="MAIN_CLASS_NAME" value="com.ggs.spring5.test.TestSpring5Demo" />
+      <option name="METHOD_NAME" value="testBook" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSpring5.bookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring5_demo1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ggs.spring5.testdemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ggs.spring5.testdemo" />
+      <option name="MAIN_CLASS_NAME" value="com.ggs.spring5.testdemo.TestSpring5" />
+      <option name="METHOD_NAME" value="bookTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestSpring5Demo.testBook" />
+        <item itemvalue="JUnit.TestSpring5.bookTest" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.test" />
       </list>
