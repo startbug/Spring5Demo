@@ -1636,7 +1636,7 @@ orm包用于整合其他框架操作数据库
 </bean>
 ```
 
-4、创建dao和service进行测试,dao中注入jdbcTemplate对象
+**4、创建dao和service进行测试,dao中注入jdbcTemplate对象**
 
 Dao层
 
@@ -1658,5 +1658,749 @@ public class BookService {
 }
 ```
 
+**5、测试**
 
+实体类
+
+```java
+@Data
+public class Book {
+  private String userId;
+  private String username;
+  private String ustatus;
+}
+```
+
+Dao层方法(Service层调用该方法)
+
+```java
+public void add(Book book) {
+    String sql="insert into t_book(user_id,username,ustatus) values(?,?,?)";
+    Object[] args={book.getUserId(),book.getUsername(),book.getUstatus()};
+    jdbcTemplate.update(sql,args);
+}
+```
+
+测试用例
+
+```java
+@Test
+public void testJdbcTemplate() {
+    ApplicationContext context=new ClassPathXmlApplicationContext("bean1.xml");
+    BookService bookService = context.getBean("bookService", BookService.class);
+    Book book = new Book("1","xxx","xxx");
+    bookService.addBook(book);
+}
+```
+
+-----------
+
+修改和删除
+
+```java
+public void deleteBook(String id) {
+
+    String sql="delete from t_book where user_id=?";
+    jdbcTemplate.update(sql,id);
+}
+public void updateBook(Book book) {
+    String sql="update t_book set username=?,ustatus=? where user_id=?";
+    Object[] args={book.getUsername(),book.getUstatus(),book.getUserId()};
+    jdbcTemplate.update(sql,args);
+}
+```
+
+------
+
+**6、查询操作**
+
+①查询记录数
+
+```java
+public Long selectCount() {
+    String sql="select count(*) from t_book";
+    Long count = jdbcTemplate.queryForObject(sql, Long.class);
+    return count;
+}
+```
+
+②查询返回对象
+
+第一个参数: sql语句
+
+第二个参数: RowMapper是接口,针对返回不同数据类型数据, 使用这个接口里面的实现类完成数据封装
+
+第三个参数: sql语句参数
+
+
+
+```java
+public Book findBookInfo(String id) {
+    String sql = "select * from t_book where user_id=?";
+    Book book = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Book>(Book.class), id);
+    return book;
+}
+```
+
+③查询多个对象(集合)
+
+```java
+public List<Book> findAllBook() {
+    String sql="select * from t_book";
+    List<Book> bookList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Book.class));
+    return bookList;
+}
+```
+
+**7、批量操作**
+
+①批量添加操作
+
+```java
+@Override
+public void batchAddBook(List<Object[]> batchArgs) {
+    String sql="insert into t_book values(?,?,?)";
+    int[] ints = jdbcTemplate.batchUpdate(sql, batchArgs);
+    System.out.println(Arrays.toString(ints));
+}
+```
+
+```java
+@Test
+public void testBatchAddBook() {
+    ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+    BookService bookService = context.getBean("bookService", BookService.class);
+    List<Object[]> batchArgs=new ArrayList<>();
+    Object[] o1={"5","java","a"};
+    Object[] o2={"6","c++","b"};
+    Object[] o3={"7","Mysql","c"};
+    batchArgs.add(o1);
+    batchArgs.add(o2);
+    batchArgs.add(o3);
+    bookService.batchAddBook(batchArgs);
+}
+```
+
+传入一个集合,泛型是一个Object数组
+
+集合中的每一个Object数组,就是一条sql语句的参数
+
+jdbcTemplate会遍历集合,拿出每一条数据,进行插入
+
+②批量修改
+
+```java
+public void batchUpdate(List<Object[]> batchArgs) {
+    String sql = "update t_book set username=?,ustatus=? where user_id=?";
+    int[] ints = jdbcTemplate.batchUpdate(sql, batchArgs);
+    System.out.println(Arrays.toString(ints));
+}
+```
+
+③批量删除
+
+```java
+public void batchDelete(List<Object[]> batchArgs) {
+    String sql="delete from t_book where user_id=?";
+    int[] ints = jdbcTemplate.batchUpdate(sql, batchArgs);
+    System.out.println(Arrays.toString(ints));
+}
+```
+
+总结:
+
+​	增改查都是用update方法
+
+​	查询某个值,查询返回对象使用queryForObject方法
+
+​	查询集合,使用query方法
+
+
+
+-------
+
+### 事务
+
+事务概念
+
+#### **1、什么是事务**
+
+(1)事务是数据库操作最基本单元,逻辑上一组操作,要么都成功,如果一个失败,所有操作都会失败
+
+(2)典型场景: 转账
+
+​	tom转账100元给lucy
+
+​	tom少100元,lucy多100元
+
+2、事务四个特性(ACID)
+
+以转账为例子说明
+
+(1)**原子性**: 转账要么都成功,要么都失败
+
+(2)**一致性**: 转账前后,总数不变; tom和lucy转账前后两个账户的总和不变
+
+(3)**隔离性**: 多事务之间,操作不会受影响
+
+(4)**持久性:** 修改数据后, 数据库中的数据相应改变,保存起来
+
+
+
+#### 2、搭建事务操作环境
+
+**①配置好数据库,增加Dao层的类,编写加钱和减钱的代码**
+
+```java
+// lucy转账100给marry
+// 加钱
+@Override
+public void decreaseMoney() {
+    String sql = "update t_account set money=money-? where username=?";
+    jdbcTemplate.update(sql, 100, "lucy");
+}
+// 减钱
+@Override
+public void increaseMoney() {
+    String sql = "update t_account set money=money+? where username=?";
+    jdbcTemplate.update(sql, 100, "marry");
+}
+```
+
+Service层执行转账操作
+
+```java
+//转账的方法
+public void transferMoney(){
+    //lucy减钱
+    userDao.decreaseMoney();
+    
+    //int i=10/0; //准备一个异常
+    
+    //marry加钱
+    userDao.increaseMoney();
+}
+```
+
+----------
+
+
+
+#### 3、Spring事务管理介绍
+
+1、事务添加到JavaEE三层结构中的Service层(业务逻辑层)
+
+2、在Spring进行事务管理操作
+
+(1)两种方式: 编程式事务管理(手写事务代码) 和 声明式事务管理(常用)
+
+3、声明式事务管理
+
+​	(1)基于注解方式(常用)
+
+​	(2)基于xml配置文件方式
+
+4、在Spring进行声明式事务管理,底层使用AOP原理
+
+5、Spring事务管理API
+
+​	(1)提供一个接口,代表事务管理器,这个接口针对不同的框架提供不同的实现类
+
+​		==PlatformTransactionManager==接口是Spring进行事务管理的顶层接口
+
+​		关注==AbstractPlatformTransactionManager==类下的实现类,有几个是多余的,实际上是有五个
+
+关注==AbstractPlatformTransactionManager==类下的实现类,有几个是多余的,实际上是有五个
+
+​	![image-20200610223937385](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200610223937385.png)
+
+
+
+**4、==注解==声明式事务管理**
+
+1.在Spring配置文件配置事务管理器
+
+```xml
+<!--创建事务管理器-->
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <!--注入数据源-->
+    <property name="dataSource" ref="dataSource"></property>
+</bean>
+```
+
+2.开启事务注解,并且添加事务管理器
+
+```xml
+<!--开启事务注解,并且指定事务管理器-->
+<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+```
+
+3.Service类上添加事务注解@Transactional
+
+```java
+@Service
+@Transactional
+public class UserService {
+```
+
+--------
+
+#### 4、XML声明式事务管理
+
+1、在Spring配置文件中进行配置
+
+2、配置通知
+
+3、配置切入点和切面
+
+```xml
+<!--1.创建事务管理器-->
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <!--注入数据源-->
+    <property name="dataSource" ref="dataSource"></property>
+</bean>
+
+<!--2.配置通知-->
+<tx:advice id="txAdvice">
+    <!--配置事务参数-->
+    <tx:attributes>
+        <!--在aop中配置切入点的范围内,再根据tx:method中的规则对匹配的方法添加事务-->
+        <tx:method name="transferMoney" propagation="REQUIRED"/>
+        <!--可以使用通配符-->
+        <!--<tx:method name="transfer*"></tx:method>-->
+    </tx:attributes>
+</tx:advice>
+
+<!--3.配置切入点和切面-->
+<aop:config>
+    <!--配置切入点-->
+    <aop:pointcut id="pointCut" expression="execution(* com.ggs.spring5.service.UserService.*(..))"/>
+    <!--配置切面-->
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="pointCut"></aop:advisor>
+</aop:config>
+```
+
+
+
+------------
+
+5、完全注解开发配置类
+
+```java
+@Configuration
+@ComponentScan(basePackages = {"com.ggs.spring5"})
+@EnableTransactionManagement // 开启事务管理器
+public class TxConfig {
+
+  @Bean
+  public DataSource dataSource() {
+    DruidDataSource dataSource = new DruidDataSource();
+    dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+    dataSource.setUrl(
+        "jdbc:mysql://localhost:3306/spring5?serverTimezone=GMT%2B8&characterEncoding=UTF-8");
+    dataSource.setUsername("root");
+    dataSource.setPassword("123456");
+    return dataSource;
+  }
+
+  @Bean
+  public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+    JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    jdbcTemplate.setDataSource(dataSource);
+    return jdbcTemplate;
+  }
+
+  //创建事务管理器
+  @Bean
+  public TransactionManager transactionManager(DataSource dataSource) {
+    DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
+    dataSourceTransactionManager.setDataSource(dataSource);
+    return dataSourceTransactionManager;
+  }
+}
+```
+
+
+
+-----
+
+
+
+#### 6、事务操作参数配置说明
+
+1、在service类上的添加的@Transactional注解,可以配置相关参数
+
+![image-20200610230158292](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200610230158292.png)
+
+
+
+2、==propagation: 事务传播行为==
+
+​	(1)多事务方法直接进行调用,这个过程中事务是如何进行管理的	
+
+​	总共有七种, 常用的大概有两种
+
+**1.REQUIRED(最常用)**
+
+​	使用当前的事务,如果当前没有食物,则自己创建一个事务
+
+​	如果已经存在事务,则加入这个事务,形成一个整体
+
+​	多用于增删改操作
+
+​	例子:A方法调用B方法, A方法已经开启事务,那么B方法也会在事务中运行
+
+**2.SUPPORTS**(较常用)
+
+​	如果当前存在事务,则使用事务; 如果当前不存在事务, 则不使用事务(有就用,没有就不用,随缘)
+
+​	例子:: A方法调用B方法,如果A方法已经开启事务, B方法就会加入到A方法的事务中
+
+**3.MANDATORY**(不常用)
+
+​	该事务传播属性强制要求必须存在一个事务,如果没有事务存在,则抛出异常
+
+​	例子:A方法调用B方法, 要求A方法必须要有事务,没有则抛出异常,很少用
+
+**4.REQUIRED_NEW**(不常用)
+
+​	如果当前有事务,则挂起该事务,并且自己创建一个新的事务执行(你做你的,我做我的,互不相干)
+
+​	例子:A方法调用B方法,A方法在调用完B方法后,如果之后出了异常,不会影响B方法的运行,B方法自己会开启一个事务,自己去提交
+
+**5.NOT_SUPPORTED**(不常用)
+
+​	如果当前有事务,则把事务挂起,自己无事务的方式运行方法(有事务我也不用)
+
+​	相对于support,在本例中,相当于强制要求方法不使用事务
+
+​	例子: A方法调用B方法,A方法开启了事务,但B方法不会使用A方法的事务
+
+**6.NEVER**(不常用)
+
+​	如果当前存在事务,则抛出异常
+
+​	强制要求父方法没有事务
+
+​	例子: A方法调用B方法,B方法上添加了(@Transactional(propagation = Propagation.NEVER),则要求A方法中没有开启事务,否则会抛出异常;
+
+​	如果B方法又调用C方法,而C方法中有事务,这是被允许的
+
+**7.NESTED**(不常用)
+
+​	父子嵌套的方式运行事务, 当子事务抛出异常之后, 父事务可以决定是否进行回滚
+
+​	例子: A方法调用B方法,用try..catch包裹B方法,如果B方法抛出异常,则可以在catch后做决定,是否进行回滚,回滚则执行rollback,不回滚则继续执行
+
+```java
+@Service
+@Transactional(propagation = Propagation.REQUIRED)
+public class UserService {
+```
+
+
+
+3、==isolation: 事务隔离级别==
+
+​	(1)事务有个特性称为隔离性, 多事务操作之间不会产生影响,不考虑隔离性会产生很多问题
+
+​	(2)有三个读问题: 脏读、不可重复读、虚(幻)读
+
+​	(3)<font color=red>脏读</font>: 一个未提交事务读取到另一个未提交事务的数据
+
+	脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据。
+	
+	　　当一个事务正在多次修改某个数据，而在这个事务中这多次的修改都还未提交，这时一个并发的事务来访问该数据，就会造成两个事务得到的数据不一致。例如：用户A向用户B转账100元，对应SQL命令如下
+	
+	　　当只执行第一条SQL时，A通知B查看账户，B发现确实钱已到账（此时即发生了脏读），而之后无论第二条SQL是否执行，只要该事务不提交，则所有操作都将回滚，那么当B以后再次查看账户时就会发现钱其实并没有转。
+	
+	---------------
+
+
+
+​	(4)<font color=red>不可重复读</font>: 一个未提交事务读取到另一个提交事务提交修改的数据
+
+>　　不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。
+>
+>　　例如事务T1在读取某一数据，而事务T2立马修改了这个数据并且提交事务给数据库，事务T1再次读取该数据就得到了不同的结果，发送了不可重复读。
+>
+>　　不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。
+>
+>　　在某些情况下，不可重复读并不是问题，比如我们多次查询某个数据当然以最后查询得到的结果为主。但在另一些情况下就有可能发生问题，例如对于同一个数据A和B依次查询就可能不同，A和B就可能打起来了……
+>
+>------------------------
+
+
+
+(5)<font color=red>幻(虚)读</font>: 一个未提交事务读取到另一个
+
+>幻读是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。
+>
+>　　幻读和不可重复读都是读取了另一条已经提交的事务（这点就脏读不同），所不同的是不可重复读查询的都是同一个数据项，而幻读针对的是一批数据整体（比如数据的个数）。
+>
+>---------------
+
+
+
+(6)解决: 通过设置事务隔离级别,解决读问题(mysql默认隔离级别为可重复读)
+
+|                                  | 脏读 | 不可重复读 | 幻读 |
+| :------------------------------: | :--: | :--------: | :--: |
+| READ UNCOMMITTED<br />(读未提交) |  有  |     有     |  有  |
+|  READ COMMITTED<br />(读已提交)  |  无  |     有     |  有  |
+| REPEATABLE READ<br />(可重复读)  |  无  |     无     |  有  |
+|    SERIALIZABLE<br />(串行化)    |  无  |     无     |  无  |
+
+
+
+```java
+@Service
+@Transactional(propagation = Propagation.REQUIRED,isolation= Isolation.REPEATABLE_READ)
+public class UserService {
+```
+
+--------------
+
+
+
+4、==time: 超时时间==
+
+​	(1)事务需要在一定时间(内执行完方法)内进行提交, 如果不提交则进行回滚
+
+​	(2)默认值是-1,设置时间以秒单位进行运算
+
+--------
+
+
+
+5、readOnly: 是否只读
+
+​	(1) 读: 查询操作, 写: 添加、修改和删除操作
+
+​	(2) 当值为false时,表示可以查询, 也可以进行添加、修改和删除操
+
+​		 当值为true时,表示仅能查询, 不可以进行添加、修改和删除操
+​		 默认值为: false
+
+
+
+6、rollbackFor: 回滚
+
+​	设置出现哪一些异常进行事务回滚
+
+```java
+//设置当只出现空指针异常才进行回滚
+@Transactional(rollbackFor = {NullPointerException.class})
+```
+
+
+
+6、noRollbackFor: 不会滚
+
+​	设置出现哪一些异常不进行事务回滚	
+
+```java
+//设置当出现空指针异常的时候不进行回滚
+@Transactional(noRollbackFor = {NullPointerException.class})
+```
+
+----------
+
+
+
+## Spring5新功能
+
+**1、整个Spring5框架代码基于Java8, 运行时兼容JDK9, 许多不建议使用的类和方法在代码库中删除**
+
+**2、Spring5.0框架自带了通用的日志封装**
+
+​	(1)Spring5已经移除Log4jConfigListener, 官方建议使用Log4j2
+
+​	(2)Spring5框架已经整合Log4j2
+
+​		第一步: 引入jar包
+
+​		![image-20200611230052555](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611230052555.png)
+
+​		第二步: 创建log4j2.xml配置文件
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，可以看到log4j2内部各种详细输出-->
+<configuration status="INFO">
+    <!--先定义所有的appender-->
+    <appenders>
+        <!--输出日志信息到控制台-->
+        <console name="Console" target="SYSTEM_OUT">
+            <!--控制日志输出的格式-->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </console>
+    </appenders>
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <!--root：用于指定项目的根日志，如果没有单独指定Logger，则会使用root作为默认的日志输出-->
+    <loggers>
+        <root level="trace">
+            <appender-ref ref="Console"/>
+        </root>
+    </loggers>
+</configuration>
+```
+
+测试方法: 注意:不要导错包
+
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * @author: Starbug
+ * @date: 2020/6/11 22:57
+ */
+public class LogTest {
+  private static final Logger log = LoggerFactory.getLogger(LogTest.class);
+  public static void main(String[] args) {
+    log.error("error级别的日志");
+    log.warn("warn级别的日志");
+    log.info("info级别的日志");
+    log.debug("debug级别的日志");
+    log.trace("trace级别的日志");
+  }
+}
+```
+
+结果: 
+
+![image-20200611231253317](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611231253317.png)
+
+
+
+**3、Spring5框架核心容器支持@Nullable注解**
+
+​	(1)Nullable注解可以使用在方法上面,属性上面,参数上面,表示方法返回值可以为空,属性值可以为空,参数值可以为空
+
+​	(2)注解使用在方法上面,方法返回值可以为空
+
+​	![image-20200611233103138](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611233103138.png)
+
+​	(3)注解使用在方法参数里面,方法参数可以为空
+
+![image-20200611233203654](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611233203654.png)
+
+​	(4)注解使用在属性上面,属性值可以为空
+
+![image-20200611233233571](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611233233571.png)
+
+
+
+>----------
+>
+>==@NonNull==可以标注在方法、字段、参数之上，表示对应的值不可以为空
+>==@Nullable==注解可以标注在方法、字段、参数之上，表示对应的值可以为空
+>
+>以上两个注解在程序运行的过程中不会起任何作用，只会在IDE、编译器、FindBugs检查、生成文档的时候有做提示；
+>
+>我使用的IDE是STS，不会做自动的检查，只有安装了FindBugs插件并运行后会做对应的提示
+>
+>摘自CSDN
+>
+>-----------
+
+
+
+**4、Spring5核心容器支持函数式风格GenericApplicationContext**
+
+函数式风格创建对象,交给Spring进行管理
+
+不给bean起名字,就只能通过全类名获取bean,不会像注解注册那样,以类名首字母小写为bean名
+
+```java
+@Test
+public void testGenericApplicationContext() {
+    // 1.创建GenericApplicationContext对象
+    GenericApplicationContext context = new GenericApplicationContext();
+    // 2.调用context的方法对象注册
+    context.refresh(); // 清空容器
+    context.registerBean("user11",User.class, () -> new User());
+    // 3.获取在spring注册的对象
+    User user = (User) context.getBean("user11");
+    //    User user = (User) context.getBean("com.ggs.spring5.entity.User");
+    System.out.println(user);
+}
+```
+
+--------
+
+
+
+**5、Spring5支持整合JUnit5**
+
+(1)整合JUnit4
+
+第一步: 引入Spring针对测试的依赖
+
+![image-20200611234512830](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611234512830.png)
+
+![image-20200611234712701](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611234712701.png)
+
+第二部: 创建测试类, 使用注解方式完成
+
+```java
+@RunWith(SpringJUnit4ClassRunner.class)//单元测试框架
+@ContextConfiguration(locations = {"classpath:bean1.xml"}) //加载配置文件
+public class JUnit4 {
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void test1(){
+        userService.transferMoney();
+    }
+}
+```
+
+
+
+(2)Spring5真个和JUnit5
+
+第一步: 引入JUnit5的jar包
+
+![image-20200612000008887](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200612000008887.png)
+
+![image-20200612000029482](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200612000029482.png)
+
+​	第二步: 创建测试类, 使用注解完成
+
+​		方式一: 
+
+```java
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(locations = {"classpath:bean1.xml"})
+public class JUnit5 {
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void test(){
+        userService.transferMoney();
+    }
+}
+```
+
+​		方式二: 将@ExtendWith和@ContextConfiguration二合一
+
+```java
+@SpringJUnitConfig(locations = {"classpath:bean1.xml"})
+public class JUnit5 {
+    @Autowired
+    private UserService userService;
+
+    @Test
+    public void test(){
+        userService.transferMoney();
+    }
+}
+```
+
+----------
 
