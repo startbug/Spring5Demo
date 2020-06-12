@@ -1,8 +1,8 @@
-# Spring5(官网spring.io)
+Spring5(官网spring.io)
 
 ## Spring框架概述
 
-![Spring5!jWW](F:\study\Spring5\笔记源码资料\笔记\笔记\分析图\Spring5模块.bmp)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612150818.bmp)
 
 1. **Spring是轻量级的开源的JavaEE框架**
 
@@ -40,11 +40,11 @@
 
 Beans和Core组成IOC容器, Context是上下文, Expression是表达式
 
-![image-20200602224258753](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200602224258753.png)
+![image-20200602224612952](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612150625.jpg)
 
 需要导入的基本包(日志包不是Spring自带的,需要自行导入,否则报错)
 
-![image-20200602224612952](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200602224612952.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151039.png)
 
 ### 3.创建User对象用于测试
 
@@ -122,7 +122,7 @@ public class User {
 
 - 图解IOC底层原理
 
-  ![image-20200602233511909](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200602233511909.png)
+  ![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151104.png)
 
 
 
@@ -146,7 +146,7 @@ ClassPathXmlApplicationContext: 读取配置文件的路径是类路径下
 
 FileSystemXmlApplicationContext:读取配置文件的路径是在硬盘下的全路径C:/xx/xx
 
-![image-20200602235408361](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200602235408361.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151141.png)
 
 
 
@@ -172,7 +172,7 @@ FileSystemXmlApplicationContext:读取配置文件的路径是在硬盘下的全
 
 ​	**1.基于xml方式创建对象**
 
-​	![image-20200604180443168](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200604180443168.png)
+​	![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151320.png)
 
 ​	(1)在Spring配置文件中,使用bean标签,标签里面添加对应属性,就可以实现对象创建
 
@@ -256,7 +256,7 @@ public class Book {
 
 ​		第一步: 导入p名称空间
 
-![image-20200604183428443](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200604183428443.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151345.png)
 
 ​		第二步: 在bean标签内使用p名称空间的属性进行赋值
 
@@ -300,7 +300,7 @@ public class Book {
 <property name="address" value="&lt;&lt;广东&gt;&gt;"></property>
 ```
 
-![image-20200604185407256](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200604185407256.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151432.png)
 
 ​	<font color=lightgreen>正确写法方式二</font>
 
@@ -313,7 +313,7 @@ public class Book {
 </property>
 ```
 
-![image-20200604185419913](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200604185419913.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151455.png)
 
 
 
@@ -585,7 +585,7 @@ public class Book {
 
 第一步: 导入util命名空间
 
-![image-20200604232120962](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200604232120962.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151523.png)
 
 第二步:使用util命名空间生成list集合进行使用
 
@@ -682,7 +682,7 @@ public void testFactoryBean() {
 
 ​	默认情况下: 地址相同
 
-![image-20200605192353800](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200605192353800.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151536.png)
 
 2、如何配置多实例
 
@@ -694,11 +694,11 @@ public void testFactoryBean() {
 
 第二个值: prototype,表示多实例对象
 
-![image-20200605192637471](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200605192637471.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151548.png)
 
 测试: 多例 ,地址不相同
 
-![image-20200605192708098](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200605192708098.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151652.png)
 
 
 
@@ -790,7 +790,7 @@ public void testOrders() {
 
 测试结果:
 
-![image-20200605195307874](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200605195307874.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151711.png)
 
 
 
@@ -826,7 +826,7 @@ public class MyBeanPost implements BeanPostProcessor {
 
 再次调用测试用例, 结果(共七步): 
 
-![image-20200605201435200](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200605201435200.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151737.png)
 
 
 
@@ -905,7 +905,7 @@ public class MyBeanPost implements BeanPostProcessor {
 
 第一步引入依赖(AOP包)
 
-![image-20200605215816987](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200605215816987.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151749.png)
 
 第二步开启组件扫描
 
@@ -1101,13 +1101,13 @@ public void testServicec2() {
 
 - 创建接口实现类代理对象, 增强类的方法
 
-  ![image-20200606192350302](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200606192350302.png)
+  ![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151844.png)
 
 第二种: 没有接口, 使用CGLIB动态代理
 
 - 创建子类的代理对象, 增强类的方法
 
-![image-20200606192455118](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200606192455118.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151856.png)
 
 
 
@@ -1117,11 +1117,11 @@ public void testServicec2() {
 
 **1、 使用JDK动态代理,使用Proxy类里面的方法创建代理对象**
 
-![image-20200606192924082](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200606192924082.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151916.png)
 
 ​	(1)调用newProxyInstance方法
 
-![image-20200606192943307](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200606192943307.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151932.png)
 
 方法中有三个参数:
 
@@ -1337,7 +1337,7 @@ public class CGLibProxy {
 
 5、结果: final修饰的方法无法被增强,只有非final才有被增强的效果
 
-![image-20200606221019145](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200606221019145.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612151952.png)
 
 小结:
 
@@ -1402,13 +1402,13 @@ public class CGLibProxy {
 
 Spring源码包中的两个aspects和aop
 
-![image-20200606223257377](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200606223257377.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152005.png)
 
-![image-20200606223311194](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200606223311194.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152015.png)
 
 额外的三个jar包(与aspects一起使用)
 
-![image-20200606223227597](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200606223227597.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152101.png)
 
 
 
@@ -1610,7 +1610,7 @@ public class PersonProxy {
 
 orm包用于整合其他框架操作数据库
 
-![image-20200608235054427](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200608235054427.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152121.png)
 
 
 
@@ -1912,7 +1912,7 @@ public void transferMoney(){
 
 关注==AbstractPlatformTransactionManager==类下的实现类,有几个是多余的,实际上是有五个
 
-​	![image-20200610223937385](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200610223937385.png)
+​	![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152141.png)
 
 
 
@@ -2030,7 +2030,7 @@ public class TxConfig {
 
 1、在service类上的添加的@Transactional注解,可以配置相关参数
 
-![image-20200610230158292](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200610230158292.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152159.png)
 
 
 
@@ -2220,7 +2220,7 @@ public class UserService {
 
 ​		第一步: 引入jar包
 
-​		![image-20200611230052555](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611230052555.png)
+​		![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152210.png)
 
 ​		第二步: 创建log4j2.xml配置文件
 
@@ -2271,7 +2271,7 @@ public class LogTest {
 
 结果: 
 
-![image-20200611231253317](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611231253317.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152223.png)
 
 
 
@@ -2281,15 +2281,15 @@ public class LogTest {
 
 ​	(2)注解使用在方法上面,方法返回值可以为空
 
-​	![image-20200611233103138](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611233103138.png)
+​	![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152238.png)
 
 ​	(3)注解使用在方法参数里面,方法参数可以为空
 
-![image-20200611233203654](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611233203654.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152249.png)
 
 ​	(4)注解使用在属性上面,属性值可以为空
 
-![image-20200611233233571](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611233233571.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152257.png)
 
 
 
@@ -2339,9 +2339,9 @@ public void testGenericApplicationContext() {
 
 第一步: 引入Spring针对测试的依赖
 
-![image-20200611234512830](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611234512830.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152307.png)
 
-![image-20200611234712701](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200611234712701.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152314.png)
 
 第二部: 创建测试类, 使用注解方式完成
 
@@ -2365,9 +2365,9 @@ public class JUnit4 {
 
 第一步: 引入JUnit5的jar包
 
-![image-20200612000008887](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200612000008887.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152322.png)
 
-![image-20200612000029482](C:\Users\Starbug\AppData\Roaming\Typora\typora-user-images\image-20200612000029482.png)
+![](https://starbug.oss-cn-shenzhen.aliyuncs.com/PicBed/20200612152338.png)
 
 ​	第二步: 创建测试类, 使用注解完成
 
