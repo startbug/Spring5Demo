@@ -2404,3 +2404,243 @@ public class JUnit5 {
 
 ----------
 
+
+
+## Spring WebFlux
+
+**1、SpringWebFlux介绍**
+
+​	(1)SpringWebFlux是Spring5新添加的模块, 用于web开发的, 功能和SpringMVC类似的, WebFlux使用当前一种比较流行的方式: 响应式编程;
+
+​	SpringWebFlux是一款响应式编程框架
+
+![](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612182850.png)
+
+​	(2)使用传统web框架, 比如SpringMVC, 这些基于Servlet容器, WebFlux是一种异步非阻塞的框架, 异步非阻塞的框架在Servlet3.1以后才支持, 核心是基于Reactor的相关API进行实现
+
+
+
+​	(3) 什么是异步非阻塞
+
+​		异步 和 同步
+
+​			==异步和同步针对调用者==, 调用者发送请求, 如果等着对方回应之后才去做其他事情就是同步; 如果发送请求之后不等待对方的回应就去做其他事情, 就是异步
+
+​			==阻塞和非阻塞针对被调用者==, 被调用者收到请求之后, 做完请求任务之后才给出反馈就是阻塞; 收到请求之后马上给出返回, 然后在做事情, 就是非阻塞
+
+​	
+
+​	(4) WebFlux特点: 
+
+​		第一 非阻塞式: 在有限资源下, 提高系统吞吐量和伸缩性, 以Reactor为基础实现响应式编程
+
+​		第二 函数式编程: Spring5框架基于java8, WebFlux使用Java8函数式编程方式实现路由请求
+
+​	
+
+​	(5) 比较SpringMVC
+
+​		图片来自SpringWebFlux官方文档(https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux)
+
+![image-20200612190413758](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612190413.png)
+
+​			第一: 两个框架都可以使用注解方式, 都可以运行在Tomcat等容器中
+
+​			第二: SpringMVC采用命令式编程, WebFlux采用异步响应式编程
+
+
+
+**2、响应式编程(Java实现)**
+
+​	(1)什么是响应式编程
+
+	>响应式编程是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。
+
+>电子表格程序(Excel)就是响应式编程的一个例子。单元格可以包含字面值或类似"=B1+C1"的公式，而包含公式的单元格的值会依据其他单元格的值的变化而变化
+
+-----百度百科
+
+​	(2)Java8及其之前版本
+
+​		设计模式: 观察者模式
+
+​		JDK8提供两个观察者模式使用的类: Observer 和 Observable		
+
+
+
+```java
+public class ObserveDemo extends Observable {
+  /**
+   * 当数据发生改变,会将观察者中的一个布尔值改为true,触发观察者执行方法 
+   * 但是没有什么场景可以发生改变,所以调用setChanged()方法手动将boolean值修改为true,强行改变,
+   * 然后调用notifyObservers,通知所有观察者
+   */
+  public static void main(String[] args) {
+
+    ObserveDemo observer = new ObserveDemo();
+    ObserveDemo observer1 = new ObserveDemo();
+    // 添加观察者
+    observer.addObserver(
+        (o, arg) -> {
+          System.out.println("手动被观察者通知,准备改变");
+        });
+
+    observer.addObserver(
+        (o, arg) -> {
+          System.out.println("发生变化");
+        });
+    observer.setChanged(); //
+    observer.notifyObservers();
+  }
+}
+```
+
+
+
+3、 响应式编程(Reactor实现)
+
+​	(1) 响应式编程操作中, Reactor是满足Reactive规范框架
+
+​	(2) Reactor有两个核心类, Mono 和 Flux, 这两个类实现接口Publisher, 提供丰富操作符.
+
+​			Flux对象实现发布者对象, 返回N个元素
+
+![image-20200612205419360](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612205419.png)
+
+​			
+
+​			Mono实现发布者, 返回0个或1个元素
+
+![image-20200612205442855](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612205442.png)
+
+
+
+​	(3)Flux和Mono都是数据流的发布者, 使用Flux和Mono都可以发出三种数据信号: 元素值, 错误信号, 完成信号, 错误信号和完成信号都代表终止信号, 终止信号用于告诉订阅者数据流结束了, 错误信号终止数据流同时把错误信息传递给订阅者
+
+
+
+​	(4) 代码演示Flux和Mono
+
+​		①引入依赖
+
+```xml
+<dependency>
+    <groupId>io.projectreactor</groupId>
+    <artifactId>reactor-core</artifactId>
+    <version>3.1.5.RELEASE</version>
+</dependency>
+```
+
+​		②代码演示
+
+```java
+  public static void main(String[] args) {
+    //just方法直接声明
+      Flux.just(1,2,3,4);
+      Mono.just(1);
+      //其他方法
+      Integer[] arr={1,2,3,4};
+      Flux.fromArray(arr);
+
+      List<Integer> list = Arrays.asList(arr);
+      Flux.fromIterable(list);
+
+      Stream<Integer> stream = list.stream();
+      Flux.fromStream(stream);
+  }
+```
+
+​	
+
+​	(5) 三种信号特点
+
+- 错误信号和完成信号都是终止信号, 不能共存
+- 如果没有发送任何元素值, 而是直接发送错误或者完成信号, 表示是空数据流
+- 如果没有错误信号, 没有完成信号, 表示是无限数据流
+
+
+
+​	(6)调用just或其他方法只是声明数据流, 数据流并没有发出, 只有进行订阅之后才发送数据流, 不订阅就执行, 什么都不会发生
+
+​		输出订阅的内容
+
+```java
+Flux<Integer> flux = Flux.just(1, 2, 3, 4);
+flux.subscribe(System.out::println);
+
+Mono<Integer> mono = Mono.just(1);
+mono.subscribe(System.out::println);
+```
+
+​		上面代码可以两句代替
+
+```java
+Flux.just(1, 2, 3, 4).subscribe(System.out::println);
+
+Mono.just(1).subscribe(System.out::println);
+```
+
+​	
+
+​	(7) 操作符
+
+① 对数据流进行一道道操作, 成为操作符, 比如工厂流水线
+
+​	有两种方式, map 和 flatMap
+
+- map: 将原元素映射为新元素
+
+![image-20200612211611919](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612211612.png)
+
+	- flatMap: 元素映射为溜
+	- 将每一个元素转换成流, 转换之后多个流合并成大的流
+
+![image-20200612211622182](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612211622.png)
+
+​		
+
+4、SpringWebFlux执行流程和核心API
+
+SpringWebWebFlux基于Reactor, 默认使用容器是Netty, Netty是高性能的NIO框架, 异步非阻塞的框架
+
+​	(1)Netty
+
+- BIO(blocking I/O) 阻塞
+
+  如果请求太多, 其他请求就在阻塞在外面,等待被处理
+
+![image-20200612215927984](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612215928.png)
+
+
+
+- NIO(non-blocking I/O) 非阻塞
+
+![image-20200612221045311](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612221045.png)
+
+​	
+
+​	(2)SpringWebFlux 执行过程和 SpringMVC类似
+
+	- SpringWebFLux核心控制器 ==DispatcherHandler==
+	- ==DispatcherHandler==实现WebHandler接口
+	- ==WebHandler==接口有一个handle方法
+
+![image-20200612221332941](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612221333.png)
+
+- =DispatcherHandler==实现类的handle方法
+
+![image-20200612221436677](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612221436.png)
+
+
+
+​	(3)SpringWebFlux里面DispatcherHandler, 负责请求的处理
+
+​		①HandlerMapping: 请求查询到处理的方法 
+
+​		②HandlerAdapter: 真正负责请求处理
+
+​		③HandlerResultHandler: 响应结果处理
+
+​	
+
+​	(4)SpringWebFlux实现函数式编程, 两个接口: RouterFunction(路由处理)和HandlerFunction(处理函数)

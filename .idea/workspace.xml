@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d23a3c3f-ba72-420e-af68-f695ec9ae8ed" name="Default Changelist" comment="" />
+    <list default="true" id="d23a3c3f-ba72-420e-af68-f695ec9ae8ed" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/reactor-demo-8/src/main/java/com/ggs/reactor/reactor8/ObserveDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reactor-demo-8/src/main/java/com/ggs/reactor/reactor8/TestReactor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,9 +112,35 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="settings.gitee" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.TestReactor">
+    <configuration name="ObserveDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ggs.reactor.reactor8.ObserveDemo" />
+      <module name="reactor-demo-8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ggs.reactor.reactor8.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestReactor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ggs.reactor.reactor8.TestReactor" />
+      <module name="reactor-demo-8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ggs.reactor.reactor8.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ggs.spring5.test" />
       <module name="spring5_demo6" />
@@ -120,8 +154,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ReactorDemo8Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="reactor-demo-8" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ggs.reactor.ReactorDemo8Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReactorDemo8Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="reactor-demo-8" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ggs.reactordemo8.ReactorDemo8Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestReactor" />
+        <item itemvalue="Application.ObserveDemo" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.test" />
       </list>
@@ -148,6 +198,7 @@
       <workItem from="1591670933981" duration="2778000" />
       <workItem from="1591673719002" duration="198000" />
       <workItem from="1591673919603" duration="372000" />
+      <workItem from="1591956286780" duration="6477000" />
     </task>
     <task id="LOCAL-00001" summary="初始化仓库,Spring5学习案例">
       <created>1591632214240</created>
@@ -189,6 +240,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1591632337376" />
+    <state x="1077" y="264" key="#com.intellij.ide.util.MemberChooser" timestamp="1591961097960">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1077" y="264" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591961097960" />
     <state x="790" y="230" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1591630069917">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -209,34 +264,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591631604367" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1591632375528">
+    <state width="1173" height="244" key="GridCell.Tab.0.bottom" timestamp="1591967558698">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591632375528" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1591632375528">
+    <state width="1173" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591967558698" />
+    <state width="1173" height="244" key="GridCell.Tab.0.center" timestamp="1591967558698">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591632375528" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1591632375528">
+    <state width="1173" height="244" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591967558698" />
+    <state width="1173" height="244" key="GridCell.Tab.0.left" timestamp="1591967558698">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591632375528" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1591632375528">
+    <state width="1173" height="244" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591967558698" />
+    <state width="1173" height="244" key="GridCell.Tab.0.right" timestamp="1591967558698">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591632375528" />
-    <state x="734" y="138" key="SettingsEditor" timestamp="1591671523169">
+    <state width="1173" height="244" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591967558698" />
+    <state x="734" y="138" key="SettingsEditor" timestamp="1591960808707">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="734" y="138" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591671523169" />
+    <state x="734" y="138" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591960808707" />
     <state x="758" y="192" width="1032" height="747" key="ShowDiffWithBranchDialog" timestamp="1591674291314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="758" y="192" width="1032" height="747" key="ShowDiffWithBranchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591674291314" />
-    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2" timestamp="1591673999197">
+    <state x="681" y="261" width="564" height="524" key="StructurePopup" timestamp="1591961759583">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591673999197" />
+    <state x="681" y="261" width="564" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1591961759583" />
+    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2" timestamp="1591947898615">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591947898615" />
     <state x="658" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1591630748977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -245,9 +304,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1003" y="470" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591674010271" />
-    <state x="334" y="130" key="new project wizard" timestamp="1591632333261">
+    <state x="601" y="168" key="new project wizard" timestamp="1591960552699">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="334" y="130" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1591632333261" />
+    <state x="601" y="168" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1591960552699" />
+    <state x="873" y="314" width="672" height="678" key="search.everywhere.popup" timestamp="1591971148041">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="873" y="314" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591971148041" />
   </component>
 </project>
