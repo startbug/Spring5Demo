@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # \u6253\u5370sql\u8BED\u53E5
+    map-underscore-to-camel-case: true  # \u5F00\u542F\u9A7C\u5CF0\u547D\u540D\u6CD5\u5339\u914D\u89C4\u5219
+  mapper-locations: classpath:/mybatis/mapper/*.xml # \u6307\u5B9Amapper.xml\u7684\u6587\u4EF6\u4F4D\u7F6E

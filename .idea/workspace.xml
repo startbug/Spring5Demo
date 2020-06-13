@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d23a3c3f-ba72-420e-af68-f695ec9ae8ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/reactor-demo-8/src/main/java/com/ggs/reactor/reactor8/ObserveDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reactor-demo-8/src/main/java/com/ggs/reactor/reactor8/TestReactor.java" afterDir="false" />
+    <list default="true" id="d23a3c3f-ba72-420e-af68-f695ec9ae8ed" name="Default Changelist" comment="初始化仓库,Spring5学习案例">
+      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/resources/mybatis/mapper/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/WebfluxDemo1Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/handler/UserHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/resources/mybatis/mapper/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/test/java/com/ggs/webflux/WebfluxDemo1ApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -19,6 +40,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Mybatis-Mapper" />
         <option value="Class" />
       </list>
     </option>
@@ -39,10 +61,11 @@
     </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="gitee-master" />
+        <entry key="$PROJECT_DIR$" value="github-master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="recentBranches">
@@ -53,16 +76,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="gitee-master" />
+                    <option name="lastUsedInstant" value="1591972037" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="github-master" />
                     <option name="lastUsedInstant" value="1591674067" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="gitee-master" />
-                    <option name="lastUsedInstant" value="1591673794" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1591673430" />
                   </RecentBranch>
                 </list>
               </option>
@@ -103,18 +122,27 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8.0_241" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/webflux-demo2" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager" selected="Application.TestReactor">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ideaIU-2020.1\workspace\spring5" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.WebfluxDemo1Application">
     <configuration name="ObserveDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ggs.reactor.reactor8.ObserveDemo" />
       <module name="reactor-demo-8" />
@@ -168,12 +196,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WebfluxDemo1Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="webflux-demo1" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ggs.webflux.WebfluxDemo1Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.TestReactor" />
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.ObserveDemo" />
-        <item itemvalue="Application.test" />
-        <item itemvalue="Application.test" />
+        <item itemvalue="Application.TestReactor" />
+        <item itemvalue="Application.ObserveDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -199,6 +235,8 @@
       <workItem from="1591673719002" duration="198000" />
       <workItem from="1591673919603" duration="372000" />
       <workItem from="1591956286780" duration="6477000" />
+      <workItem from="1592053419679" duration="4687000" />
+      <workItem from="1592060993803" duration="1394000" />
     </task>
     <task id="LOCAL-00001" summary="初始化仓库,Spring5学习案例">
       <created>1591632214240</created>
@@ -240,50 +278,82 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1591632337376" />
-    <state x="1077" y="264" key="#com.intellij.ide.util.MemberChooser" timestamp="1591961097960">
+    <state x="1077" y="264" key="#com.intellij.ide.util.MemberChooser" timestamp="1592057752602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1077" y="264" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591961097960" />
+    <state x="1077" y="264" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1592057752602" />
     <state x="790" y="230" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1591630069917">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="230" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591630069917" />
+    <state x="994" y="496" width="447" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1592053567620">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="994" y="496" width="447" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1592053567620" />
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1591630047482">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591630047482" />
-    <state x="526" y="113" key="CommitChangelistDialog2" timestamp="1591673504064">
+    <state x="526" y="113" key="CommitChangelistDialog2" timestamp="1591971780501">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="526" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591673504064" />
+    <state x="526" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591971780501" />
     <state x="197" y="124" key="DiffContextDialog" timestamp="1591672612999">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="197" y="124" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591672612999" />
-    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1591631604367">
+    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1592061015340">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591631604367" />
-    <state width="1173" height="244" key="GridCell.Tab.0.bottom" timestamp="1591967558698">
+    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592061015340" />
+    <state width="1877" height="338" key="GridCell.Tab.0.bottom" timestamp="1592060989734">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1173" height="244" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591967558698" />
-    <state width="1173" height="244" key="GridCell.Tab.0.center" timestamp="1591967558698">
+    <state width="1877" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989734" />
+    <state width="1877" height="338" key="GridCell.Tab.0.center" timestamp="1592060989734">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1173" height="244" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591967558698" />
-    <state width="1173" height="244" key="GridCell.Tab.0.left" timestamp="1591967558698">
+    <state width="1877" height="338" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989734" />
+    <state width="1877" height="338" key="GridCell.Tab.0.left" timestamp="1592060989734">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1173" height="244" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591967558698" />
-    <state width="1173" height="244" key="GridCell.Tab.0.right" timestamp="1591967558698">
+    <state width="1877" height="338" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989734" />
+    <state width="1877" height="338" key="GridCell.Tab.0.right" timestamp="1592060989734">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1173" height="244" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591967558698" />
-    <state x="734" y="138" key="SettingsEditor" timestamp="1591960808707">
+    <state width="1877" height="338" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989734" />
+    <state width="1877" height="338" key="GridCell.Tab.1.bottom" timestamp="1592060989735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="734" y="138" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591960808707" />
+    <state width="1877" height="338" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989735" />
+    <state width="1877" height="338" key="GridCell.Tab.1.center" timestamp="1592060989735">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989735" />
+    <state width="1877" height="338" key="GridCell.Tab.1.left" timestamp="1592060989734">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989734" />
+    <state width="1877" height="338" key="GridCell.Tab.1.right" timestamp="1592060989735">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="338" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989735" />
+    <state x="540" y="254" key="IDE.errors.dialog" timestamp="1592053443194">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="254" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592053443194" />
+    <state x="838" y="383" width="424" height="273" key="MultipleFileMergeDialog" timestamp="1591971851036">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="838" y="383" width="424" height="273" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591971851036" />
+    <state x="894" y="267" key="NewModule_or_Project.wizard" timestamp="1592061071251">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="894" y="267" key="NewModule_or_Project.wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1592061071251" />
+    <state x="734" y="138" key="SettingsEditor" timestamp="1592061120231">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="734" y="138" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592061120231" />
     <state x="758" y="192" width="1032" height="747" key="ShowDiffWithBranchDialog" timestamp="1591674291314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -292,10 +362,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="564" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1591961759583" />
-    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2" timestamp="1591947898615">
+    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2" timestamp="1591971891452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591947898615" />
+    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591971891452" />
     <state x="658" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1591630748977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -304,13 +374,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1003" y="470" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591674010271" />
-    <state x="601" y="168" key="new project wizard" timestamp="1591960552699">
+    <state x="601" y="168" key="new project wizard" timestamp="1592060876132">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="601" y="168" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1591960552699" />
-    <state x="873" y="314" width="672" height="678" key="search.everywhere.popup" timestamp="1591971148041">
+    <state x="601" y="168" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1592060876132" />
+    <state x="873" y="314" width="672" height="678" key="search.everywhere.popup" timestamp="1592058227051">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="873" y="314" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591971148041" />
+    <state x="873" y="314" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592058227051" />
   </component>
 </project>

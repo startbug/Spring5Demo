@@ -2448,7 +2448,9 @@ public class JUnit5 {
 
 ​			第二: SpringMVC采用命令式编程, WebFlux采用异步响应式编程
 
+​			说明: SpringMVC方式实现, 同步阻塞的方式, 基于SpringMVC+Servlet+Tomcat
 
+​					  SpringWebFlux方式实现, 异步非阻塞方式, 基于SpringWebFlux+Reactor+Netty
 
 **2、响应式编程(Java实现)**
 
@@ -2497,7 +2499,7 @@ public class ObserveDemo extends Observable {
 
 
 
-3、 响应式编程(Reactor实现)
+**3、 响应式编程(Reactor实现)**
 
 ​	(1) 响应式编程操作中, Reactor是满足Reactive规范框架
 
@@ -2599,7 +2601,7 @@ Mono.just(1).subscribe(System.out::println);
 
 ​		
 
-4、SpringWebFlux执行流程和核心API
+**4、SpringWebFlux执行流程和核心API**
 
 SpringWebWebFlux基于Reactor, 默认使用容器是Netty, Netty是高性能的NIO框架, 异步非阻塞的框架
 
@@ -2621,9 +2623,9 @@ SpringWebWebFlux基于Reactor, 默认使用容器是Netty, Netty是高性能的N
 
 ​	(2)SpringWebFlux 执行过程和 SpringMVC类似
 
-	- SpringWebFLux核心控制器 ==DispatcherHandler==
-	- ==DispatcherHandler==实现WebHandler接口
-	- ==WebHandler==接口有一个handle方法
+- SpringWebFLux核心控制器 ==DispatcherHandler==
+- ==DispatcherHandler==实现WebHandler接口
+- ==WebHandler==接口有一个handle方法
 
 ![image-20200612221332941](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200612221333.png)
 
@@ -2644,3 +2646,295 @@ SpringWebWebFlux基于Reactor, 默认使用容器是Netty, Netty是高性能的N
 ​	
 
 ​	(4)SpringWebFlux实现函数式编程, 两个接口: RouterFunction(路由处理)和HandlerFunction(处理函数)
+
+
+
+
+
+### SpringWebFlux(基于注解编程模型)
+
+SpringWebFlux实现方式有两种: 注解编程模型和函数式编程模型
+
+使用注解编程模型方式, 和之前SpringMVC使用相似的, 只需要把相关依赖配置到项目中, SpringBoot自动配置相关运行容器, 默认情况下使用Netty服务器
+
+​	①创建SpringBoot工程, 引入WebFlux依赖和其他相关依赖, 编写配置文件application.yml
+
+```xml
+<!--SpringWebFlux的starter(场景启动器)-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+<!--lombok插件,自动生成get、set等方法-->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.12</version>
+</dependency>
+<!--mysql数据库连接-->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.20</version>
+</dependency>
+<!--Hikari数据库连接池-->
+<dependency>
+    <groupId>com.zaxxer</groupId>
+    <artifactId>HikariCP</artifactId>
+    <version>3.4.5</version>
+</dependency>
+<!--SpringBoot整合Mybatis的starter-->
+<dependency>
+    <groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <version>2.1.2</version>
+</dependency>
+```
+
+​	application.yml
+
+```yml
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql语句
+    map-underscore-to-camel-case: true  # 开启驼峰命名法匹配规则
+  mapper-locations: classpath:/mybatis/mapper/*.xml # 指定mapper.xml的文件位置
+```
+
+​	②创建实体类
+
+```java
+@Data
+@AllArgsConstructor
+public class User {
+  private Integer id;
+  private Integer age;
+  private String username;
+}
+```
+
+​	③Mapper的代码
+
+```java
+public interface UserMapper {
+    
+    User findById(Integer id);
+
+    List<User> findAll();
+
+    Integer insertUser(User user);
+}
+```
+
+​	④Mapper.xml文件
+
+```java
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ggs.webflux.mapper.UserMapper">
+    <insert id="insertUser">
+        insert into user(id,age,username) values(#{id},#{age},#{username});
+    </insert>
+
+    <select id="findById" resultType="com.ggs.webflux.entity.User">
+        select id,age,username from user where id=#{id};
+    </select>
+
+    <select id="findAll" resultType="com.ggs.webflux.entity.User">
+        select id,age,username from user;
+    </select>
+</mapper>
+```
+
+​	⑤Service类, 1个或0个数据,使用Mono, 多个数据使用Flux, 参数类型作为Mono或Flux的泛型, 通过just、fromStream、fromArray、fromIterable等等方法添加元素到其中
+
+```java
+/**
+ * @author: Starbug
+ * @date: 2020/6/13 22:15
+ */
+@Service
+public class UserServiceImpl implements UserService {
+    @Autowired
+    private UserMapper userMapper;
+
+    @Override
+    public Mono<User> findById(Integer id) {
+        User user=userMapper.findById(id);
+        return Mono.just(user);
+    }
+
+    @Override
+    public Flux<User> findAll() {
+        List<User> users=userMapper.findAll();
+        Flux<User> userListFlux = Flux.fromIterable(users);
+        return userListFlux;
+    }
+
+    @Override
+    public Mono<Void> insertUser(Mono<User> userMono) {
+        Mono<Void> voidMono = userMono
+                .doOnNext(
+                        user -> {
+                            Integer effectRow = userMapper.insertUser(user);
+                            System.out.println(effectRow);
+                        })
+                .thenEmpty(Mono.empty());// 结束之后传入终止信号
+        return voidMono;
+    }
+}
+```
+
+​	⑥Controller
+
+```java
+/**
+ * @author: Starbug
+ * @date: 2020/6/13 22:35
+ */
+@RestController
+public class UserController {
+
+  @Autowired private UserService userService;
+
+  @GetMapping("/user/{id}")
+  public Mono<User> findById(@PathVariable Integer id) {
+    return userService.findById(id);
+  }
+
+  @GetMapping("/user")
+  public Flux<User> findAll() {
+    return userService.findAll();
+  }
+
+  @PostMapping("/insert/user")
+  public Mono<Void> insertUser(@RequestBody User user) {
+    Mono<User> userMono = Mono.just(user);
+    return userService.insertUser(userMono);
+  }
+}/**
+ * @author: Starbug
+ * @date: 2020/6/13 22:35
+ */
+@RestController
+public class UserController {
+
+  @Autowired private UserService userService;
+
+  @GetMapping("/user/{id}")
+  public Mono<User> findById(@PathVariable Integer id) {
+    return userService.findById(id);
+  }
+
+  @GetMapping("/user")
+  public Flux<User> findAll() {
+    return userService.findAll();
+  }
+
+  @PostMapping("/insert/user")
+  public Mono<Void> insertUser(@RequestBody User user) {
+    Mono<User> userMono = Mono.just(user);
+    return userService.insertUser(userMono);
+  }
+}
+```
+
+----------
+
+
+
+### SpringWebFlux(基于函数式编程模型)
+
+​	(1)在使用函数式编程模型操作的时候, 需要自己初始化服务器
+
+​	(2)基于函数式编程模型的时候, 有两个核心接口: RouterFunction(实现路由功能, 请求转发对应的handler) 和 HandlerFunction(处理请求生成响应的函数). 核心任务定义两个函数式接口的实现并且启动需要的服务器
+
+​	(3)SpringWebFlux请求和响应不再是==ServletRequest==和==ServletResponse==, 而是==ServerRequest==和==ServerResponse==
+
+
+
+​	①将原先的工程复制一份,删除controller层,重新创建
+
+​	②创建Handler(具体实现方法), 这表达式写的我懵逼
+
+```java
+/**
+ * @author: Starbug
+ * @date: 2020/6/13 23:30
+ */
+public class UserHandler {
+
+  private final UserService userService;
+
+  public UserHandler(UserService userService) {
+    this.userService = userService;
+  }
+
+  // 根据id查询
+  public Mono<ServerResponse> getById(ServerRequest request) {
+    // 从路径中获取id值
+    int id = Integer.parseInt(request.pathVariable("id"));
+    // 空值处理,构建一个空的流
+    Mono<ServerResponse> notFound = ServerResponse.notFound().build();
+    // 调用Service方法获取数据
+    Mono<User> userMono = userService.findById(id);
+    // 把userMono通过flatMap方法将多个流(这里只有一个流Mono<User>)合并成一个流再输出到一个流中(Mono<ServerResponse>)
+    return userMono
+        .flatMap(
+            user -> {
+              // user值就是userMono
+              return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(fromObject(user));
+            })
+        .switchIfEmpty(notFound);
+  }
+
+  //查询所有
+  public Mono<ServerResponse> getAll(){
+    //调用Service得到结果
+    Flux<User> usersListFlux = userService.findAll();
+
+    return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(usersListFlux,User.class);
+  }
+  
+  //添加
+  public Mono<ServerResponse> insertUser(ServerRequest request){
+    Mono<User> userMono = request.bodyToMono(User.class);
+    return ServerResponse.ok().build(userService.insertUser(userMono));
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
