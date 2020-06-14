@@ -1,35 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d23a3c3f-ba72-420e-af68-f695ec9ae8ed" name="Default Changelist" comment="初始化仓库,Spring5学习案例">
-      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/java/com/ggs/webflux/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo1/src/main/resources/mybatis/mapper/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/WebfluxDemo1Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/handler/UserHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/resources/mybatis/mapper/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/test/java/com/ggs/webflux/WebfluxDemo1ApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="d23a3c3f-ba72-420e-af68-f695ec9ae8ed" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/service/impl/NewUserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/handler/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/webflux-demo2/src/main/java/com/ggs/webflux/handler/UserHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,13 +121,39 @@
       <recent name="E:\ideaIU-2020.1\workspace\spring5" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.WebfluxDemo1Application">
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ggs.webflux.Client" />
+      <module name="webflux-demo2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ggs.webflux.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ObserveDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ggs.reactor.reactor8.ObserveDemo" />
       <module name="reactor-demo-8" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ggs.reactor.reactor8.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ggs.webflux.Server" />
+      <module name="webflux-demo2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ggs.webflux.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -205,10 +210,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.TestReactor" />
         <item itemvalue="Application.test" />
-        <item itemvalue="Application.ObserveDemo" />
-        <item itemvalue="Application.TestReactor" />
         <item itemvalue="Application.ObserveDemo" />
       </list>
     </recent_temporary>
@@ -236,7 +241,8 @@
       <workItem from="1591673919603" duration="372000" />
       <workItem from="1591956286780" duration="6477000" />
       <workItem from="1592053419679" duration="4687000" />
-      <workItem from="1592060993803" duration="1394000" />
+      <workItem from="1592060993803" duration="1747000" />
+      <workItem from="1592111773410" duration="5560000" />
     </task>
     <task id="LOCAL-00001" summary="初始化仓库,Spring5学习案例">
       <created>1591632214240</created>
@@ -259,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591673506599</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="新添加SpringWebFlux注解开发的案例&#10;函数式编程方式正在编写中....">
+      <created>1592063202800</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1592063202801</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,7 +280,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="初始化仓库,Spring5学习案例" />
-    <option name="LAST_COMMIT_MESSAGE" value="初始化仓库,Spring5学习案例" />
+    <MESSAGE value="新添加SpringWebFlux注解开发的案例&#10;函数式编程方式正在编写中...." />
+    <option name="LAST_COMMIT_MESSAGE" value="新添加SpringWebFlux注解开发的案例&#10;函数式编程方式正在编写中...." />
   </component>
   <component name="WindowStateProjectService">
     <state x="1156" y="428" key="#Notifications" timestamp="1591673087931">
@@ -294,10 +308,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591630047482" />
-    <state x="526" y="113" key="CommitChangelistDialog2" timestamp="1591971780501">
+    <state x="526" y="113" key="CommitChangelistDialog2" timestamp="1592063199533">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="526" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591971780501" />
+    <state x="526" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592063199533" />
     <state x="197" y="124" key="DiffContextDialog" timestamp="1591672612999">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -306,22 +320,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592061015340" />
-    <state width="1877" height="338" key="GridCell.Tab.0.bottom" timestamp="1592060989734">
+    <state width="1877" height="293" key="GridCell.Tab.0.bottom" timestamp="1592118529103">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989734" />
-    <state width="1877" height="338" key="GridCell.Tab.0.center" timestamp="1592060989734">
+    <state width="1877" height="293" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592118529103" />
+    <state width="1877" height="293" key="GridCell.Tab.0.center" timestamp="1592118529103">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989734" />
-    <state width="1877" height="338" key="GridCell.Tab.0.left" timestamp="1592060989734">
+    <state width="1877" height="293" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592118529103" />
+    <state width="1877" height="293" key="GridCell.Tab.0.left" timestamp="1592118529103">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989734" />
-    <state width="1877" height="338" key="GridCell.Tab.0.right" timestamp="1592060989734">
+    <state width="1877" height="293" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592118529103" />
+    <state width="1877" height="293" key="GridCell.Tab.0.right" timestamp="1592118529103">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="338" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989734" />
+    <state width="1877" height="293" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592118529103" />
     <state width="1877" height="338" key="GridCell.Tab.1.bottom" timestamp="1592060989735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -338,10 +352,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="338" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592060989735" />
-    <state x="540" y="254" key="IDE.errors.dialog" timestamp="1592053443194">
+    <state x="540" y="254" key="IDE.errors.dialog" timestamp="1592113303815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="540" y="254" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592053443194" />
+    <state x="540" y="254" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592113303815" />
     <state x="838" y="383" width="424" height="273" key="MultipleFileMergeDialog" timestamp="1591971851036">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -362,10 +376,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="564" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1591961759583" />
-    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2" timestamp="1591971891452">
+    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2" timestamp="1592063209096">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591971891452" />
+    <state x="725" y="332" width="816" height="463" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592063209096" />
     <state x="658" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1591630748977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

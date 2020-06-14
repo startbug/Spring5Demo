@@ -41,7 +41,7 @@ public class UserHandler {
   }
 
   //查询所有
-  public Mono<ServerResponse> getAll(){
+  public Mono<ServerResponse> getAll(ServerRequest request){
     //调用Service得到结果
     Flux<User> usersListFlux = userService.findAll();
 

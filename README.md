@@ -2716,6 +2716,7 @@ mybatis:
 ```java
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
   private Integer id;
   private Integer age;
@@ -2916,25 +2917,202 @@ public class UserHandler {
 }
 ```
 
+​	③初始化服务器,编写Router
+
+​		创建路由的方法
+
+```java
+// 1.创建router对象
+public RouterFunction<ServerResponse> routingFunction() {
+    // 创建handler对象
+    UserService userService = new UserServiceImpl();
+    UserHandler userHandler = new UserHandler(userService);
+    // 设置路由
+    return RouterFunctions.route(
+        GET("/user/{id}").and(accept(APPLICATION_JSON)), userHandler::getById)
+        .andRoute(GET("/users").and(accept(APPLICATION_JSON)), userHandler::getAll)
+        .andRoute(POST("/insert/user").and(accept(APPLICATION_JSON)), userHandler::insertUser);
+}
+```
+
+​	创建服务器完成适配
+
+```java
+//2.创建服务器完成适配
+public void createReactorServer(){
+    //路由和handler适配
+    RouterFunction<ServerResponse> router = routingFunction();
+    //HttpHandler完成http请求,存储http请求相关的信息
+    HttpHandler httpHandler = toHttpHandler(router);
+    //完成最终的适配
+    ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(httpHandler);
+
+    //创建服务器
+    HttpServer httpServer = HttpServer.create();
+    //传入适配器,一启动,就会启动服务器,完成适配,当访问的时候,通过路由分配到具体的访问路径
+    httpServer.handle(adapter).bindNow();
+}
+```
 
 
 
+由于不会基于函数式编程模型的SpringWebFlux整合Mybatis,所以将UserService修改成NewUserServiceImpl,数据保存到map中
+
+```java
+public class NewUserServiceImpl implements UserService { // 创建map集合存储数据
+  private final Map<Integer, User> users = new HashMap<>();
+
+  public NewUserServiceImpl() {
+    this.users.put(1, new User(1, 20, "nan"));
+    this.users.put(2, new User(2, 30, "sdf"));
+    this.users.put(3, new User(3, 33, "aaaaa"));
+  }
+
+  // 根据id查询
+  @Override
+  public Mono<User> findById(Integer id) {
+    return Mono.justOrEmpty(this.users.get(id));
+  }
+  // 查询多个用户
+  @Override
+  public Flux<User> findAll() {
+    return Flux.fromIterable(this.users.values());
+  }
+  // 添加用户
+  @Override
+  public Mono<Void> insertUser(Mono<User> userMono) {
+    return userMono
+        .doOnNext(
+            person -> { // 向map集合里面放值
+              int id = users.size() + 1;
+              users.put(id, person);
+            })
+        .thenEmpty(Mono.empty());
+  }
+}
+```
+
+写一个main方法,启动服务(这好像就与SpringBoot没关系了额....我也不知道怎么整合其他starter)
+
+```java
+public static void main(String[] args) throws IOException {
+    Server server = new Server();
+    server.createReactorServer();
+    System.out.println("已经开启了");
+    System.in.read();
+}
+```
+
+启动成功后,找到这一段日志,里面有端口号,由于没有指定端口号,所以端口号是随机的
+
+![image-20200614144355554](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200614144355.png)
+
+查询所有数据成功!
+
+![image-20200614144432793](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200614144432.png)
+
+---------
+
+​	④使用WebClient调用, 要时刻开启服务器,不然无法访问,WebClient中的端口号根据服务器端口号进行修改
+
+```java
+/**
+ * @author: Starbug
+ * @date: 2020/6/14 14:45
+ */
+public class Client {
+  public static void main(String[] args) {
+    WebClient webClient = WebClient.create("http://127.0.0.1:4697");
+    // 根据id查询
+    Integer id = 1;
+    User user =
+        webClient
+            .get()
+            .uri("/user/{id}", id)
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(User.class)
+            .block();
+
+    System.out.println(user);
+
+    // 查询所有
+    Flux<User> users =
+        webClient
+            .get()
+            .uri("/users")
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToFlux(User.class);
+
+    users.map(userInfo->userInfo.toString()).buffer().doOnNext(System.out::println).blockFirst();
+  }
+}
+
+```
+
+id查询
+
+![image-20200614145322804](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200614145322.png)
+
+查询所有
+
+![image-20200614145313687](https://gitee.com/starbug-gitee/PicBed/raw/master/img/20200614145313.png)
+
+----------
 
 
 
+## 课程总结
 
+**1、Spring框架概述**
 
+​	(1)轻量级开源JavaEE框架, 目的是解决企业应用开发的复杂性, 两个核心组成: IOC和AOP
 
+​	(2)Spring5.2.6版本
 
+2、IOC容器
 
+​	(1)IOC底层原理(工厂、反射、xml解析等)
 
+​	(2)IOC接口(BeanFactory)
 
+​	(3)IOC操作Bean管理(基于xml)
 
+​	(4)IOC操作Bean管理(基于注解)
 
+3、AOP
 
+​	(1)AOp底层原理: 动态代理, 有接口(JDK动态代理); 没有接口(CGLIB动态代理), 使用继承实现
 
+​	(2)术语: 切入点、增强(通知)、切面
 
+​	(3)基于AspectJ实现AOP操作
 
+4、JdbcTemplate
 
+​	(1)使用JdbcTemplate实现数据库crud操作
 
+​	(2)使用JdbcTemplate实现数据库批量操作
 
+5、事务管理
+
+​	(1)事务概念
+
+​	(2)重要概念(传播行为和隔离级别)
+
+​	(3)基于注解实现声明式事务管理
+
+​	(4)完全注解方式实现声明式事务管理
+
+6、Spring5新功能
+
+​	(1)整合日志框架(log4j2)
+
+​	(2)@Nullable注解
+
+​	(3)函数式注册对象
+
+​	(4)整合JUnit5单元测试框架
+
+​	(5)SpringWebFlux响应式编程框架
