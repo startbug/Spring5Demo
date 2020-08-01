@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ggs.webflux.mapper.UserMapper">
+    <insert id="insertUser">
+        insert into user(id,age,username) values(#{id},#{age},#{username});
+    </insert>
+
+    <select id="findById" resultType="com.ggs.webflux.entity.User">
+        select id,age,username from user where id=#{id};
+    </select>
+
+    <select id="findAll" resultType="com.ggs.webflux.entity.User">
+        select id,age,username from user;
+    </select>
+</mapper>

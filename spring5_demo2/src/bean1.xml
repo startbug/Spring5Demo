@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="stu" class="com.ggs.spring5.collection.type.Stu">
+        <property name="courses">
+            <array>
+                <value>java课程</value>
+                <value>php课程</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>张三</value>
+                <value>李思思</value>
+            </list>
+        </property>
+        <property name="maps">
+            <map>
+                <entry key="JAVA" value="java"></entry>
+                <entry key="PHP" value="php"></entry>
+            </map>
+        </property>
+        <property name="sets">
+            <set>
+                <value>啊啊啊</value>
+                <value>lllllllllll</value>
+            </set>
+        </property>
+
+        <!--注入List集合类型,值是对象类型-->
+        <property name="courseList">
+            <list>
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <!--创建多个course对象-->
+    <bean id="course1" class="com.ggs.spring5.collection.type.Course">
+        <property name="cname" value="Spring5"></property>
+    </bean>
+    <bean id="course2" class="com.ggs.spring5.collection.type.Course">
+        <property name="cname" value="Mybatis"></property>
+    </bean>
+
+</beans>
